@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 
 function Header(props) {
     return (
-        <Grid container>
-            <Grid item xs={12} md={12} justify="center" >
+        <Grid container justify="center">
+            <Grid item xs={12} md={12} >
                 <Typography variant="h1">
                     Linux Permissions
             </Typography>
