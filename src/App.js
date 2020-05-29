@@ -8,6 +8,13 @@ function App() {
   return (
     <div className="App">
       <Grid container>
+        <Grid item xs={12} md={12} justify="center" >
+          <Typography variant="h1">
+            Linux Permissions
+            </Typography>
+        </Grid>
+      </Grid>
+      <Grid container spacing={6}>
         <Grid item xs={12} md={4} justify="center" >
           <Typography variant="h4">
             Self/Owner
@@ -34,7 +41,7 @@ function App() {
           </Typography>
         </Grid>
       </Grid>
-    </div>
+    </div >
   );
 }
 
