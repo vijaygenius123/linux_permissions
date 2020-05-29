@@ -4,14 +4,23 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 function Permission(props) {
-    const [owner, setOwner] = useState(false)
-    const [group, setGroup] = useState(false)
-    const [others, setOthers] = useState(false)
-    const { calculateCommand } = props;
+    const [read, setRead] = useState(false)
+    const [write, setWrite] = useState(false)
+    const [execute, setExecute] = useState(false)
+    const { updateValues, section } = props;
 
-    const setPropertyAndCallCalculate = (section, value) => {
-        console.log(section, value)
-
+    const setPropertyAndCallCalculate = (property, value) => {
+        const newValue = !value;
+        if (property === 'R') {
+            setRead(newValue)
+            updateValues(section, [newValue, write, execute])
+        } else if (property === 'W') {
+            setWrite(newValue)
+            updateValues(section, [read, newValue, execute])
+        } else if (property === 'X') {
+            setExecute(newValue)
+            updateValues(section, [read, write, newValue])
+        }
     }
 
     return (
@@ -20,24 +29,24 @@ function Permission(props) {
                 <Grid item>
                     <Typography>R</Typography>
                     <Checkbox
-                        checked={owner}
-                        onChange={() => setPropertyAndCallCalculate('S', owner)}
+                        checked={read}
+                        onChange={() => setPropertyAndCallCalculate('R', read)}
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                 </Grid>
                 <Grid item>
                     <Typography>W</Typography>
                     <Checkbox
-                        checked={group}
-                        onChange={() => setPropertyAndCallCalculate('G', group)}
+                        checked={write}
+                        onChange={() => setPropertyAndCallCalculate('W', write)}
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                 </Grid>
                 <Grid item>
                     <Typography>X</Typography>
                     <Checkbox
-                        checked={others}
-                        onChange={() => setPropertyAndCallCalculate('O', others)}
+                        checked={execute}
+                        onChange={() => setPropertyAndCallCalculate('X', execute)}
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                 </Grid>

@@ -9,26 +9,27 @@ import Typography from '@material-ui/core/Typography';
 import Permission from './Permission'
 
 function PermissionsList(props) {
-    const { calculateCommand } = props
+    const { updateValues, values } = props
+
     return (
         <Grid container spacing={6} justify="center" >
             <Grid item xs={12} md={4} >
                 <Typography variant="h4">
                     Self/Owner
                 </Typography>
-                <Permission calculateCommand={calculateCommand} />
+                <Permission section="S" updateValues={updateValues} />
             </Grid>
             <Grid item xs={12} md={4}  >
                 <Typography variant="h4">
                     Group
                 </Typography>
-                <Permission calculateCommand={calculateCommand} />
+                <Permission section="G" updateValues={updateValues} />
             </Grid>
             <Grid item xs={12} md={4} >
                 <Typography variant="h4">
                     Others
                 </Typography>
-                <Permission calculateCommand={calculateCommand} />
+                <Permission section="O" updateValues={updateValues} />
             </Grid>
         </Grid>
     )
